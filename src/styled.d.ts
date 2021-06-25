@@ -10,6 +10,8 @@ import sizes from "./theme/sizes";
 declare module "styled-components" {
   export interface DefaultTheme {
     colors: typeof lightColors;
+    fonts: typeof fonts;
+    fontWeights: typeof fontWeights;
     radii: typeof radii;
     shadow: typeof lightShadow;
     space: typeof space;

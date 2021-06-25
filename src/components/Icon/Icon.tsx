@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import icons, { iconVariant } from "./IconElement/icon";
+import icons, { iconVariant } from "./iconVariant";
 
 export interface IconProps {
   variant: iconVariant;
