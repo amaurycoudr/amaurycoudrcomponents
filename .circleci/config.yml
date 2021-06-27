@@ -6,7 +6,7 @@ defaults: &defaults
     - image: circleci/node:8.9.1
 
 jobs:
-  install:
+  build:
     <<: *defaults
     steps:
       - checkout
@@ -18,7 +18,9 @@ jobs:
             - v1-dependencies-
 
       - run: npm install
-
+      - run:
+          name: Build Lib
+          command: npm run build
       - save_cache:
           paths:
             - node_modules
@@ -36,20 +38,17 @@ jobs:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
-          name: Build Lib
-          command: npm run build
-      - run:
           name: Publish package
           command: npm publish
 
 workflows:
   version: 2
-  install-deploy:
+  build_deploy:
     jobs:
-      - install
+      - build
       - deploy:
           requires:
-            - install
+            - build
           filters:
             tags:
               only: /^v.*/
