@@ -20,9 +20,13 @@ const darkColors: typeof lightColors = {
   },
   primaryGradient: {},
   secondary: "#879DED",
-  valid: "#96EE77",
-  warning: "#F0B673",
-  error: "#EB5B5B",
-  info: "77CBEE",
+  valid: "#217C13",
+  validLight: "#EBFCE9",
+  warning: "#8E690B",
+  warningLight: "#FCFAE9",
+  error: "#980101",
+  errorLight: "#FFE6E6",
+  info: "#227691",
+  infoLight: "#EAF6FA",
 };
 export default darkColors;
