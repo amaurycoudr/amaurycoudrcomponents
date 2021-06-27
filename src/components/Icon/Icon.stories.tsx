@@ -1,7 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import Icon, { IconProps } from "./Icon";
-import theme from "../../theme/theme";
 
 export default {
   title: "Icon",

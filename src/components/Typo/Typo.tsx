@@ -8,6 +8,7 @@ import {
   variant,
 } from "styled-system";
 import { ResponsiveValue, Theme, TLengthStyledSystem } from "styled-system";
+import { Color } from "../../theme/lightColors";
 const typoVariant = {
   title: {
     lineHeight: "28px",
@@ -47,17 +48,10 @@ const typoVariant = {
   },
 };
 
-export type IColor =
-  | (string &
-      ResponsiveValue<
-        string | number | symbol,
-        Required<Theme<TLengthStyledSystem>>
-      >)
-  | undefined;
-
-export interface TypoPros extends TypographyProps, ColorProps, SpaceProps {
+export interface TypoPros extends TypographyProps, SpaceProps {
   variant?: keyof typeof typoVariant;
-  color?: string;
+  color?: Color;
+  bg?: Color;
 }
 const Typo = styled.p<TypoPros>`
   display: flex;

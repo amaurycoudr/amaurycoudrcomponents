@@ -18,9 +18,33 @@ const lightColors = {
   },
   primaryGradient: {},
   secondary: "#879DED",
-  valid: "#96EE77",
-  warning: "#F0B673",
-  error: "#EB5B5B",
-  info: "77CBEE",
+  valid: "#217C13",
+  validLight: "#EBFCE9",
+  warning: "#8E690B",
+  warningLight: "#FCFAE9",
+  error: "#980101",
+  errorLight: "#FFE6E6",
+  info: "#227691",
+  infoLight: "#EAF6FA",
 };
+export type Color =
+  | "bg.dark"
+  | "bg.medium"
+  | "bg.light"
+  | "font.dark"
+  | "font.medium"
+  | "font.light"
+  | "primary"
+  | "primaryVariant.1"
+  | "primaryVariant.2"
+  | "primaryVariant.3"
+  | "secondary"
+  | "valid"
+  | "validLight"
+  | "warning"
+  | "warningLight"
+  | "error"
+  | "errorLight"
+  | "info"
+  | "infoLight";
 export default lightColors;
