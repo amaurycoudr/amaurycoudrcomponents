@@ -1,13 +1,13 @@
 import React, { FC, useContext, useState } from "react";
 import styled, { ThemeContext } from "styled-components";
-import { lightShadow } from "../../helpers/shadow";
+import { emptyShadow, shadow as boxShadow } from "../../helpers/shadow";
 import { iconPosition } from "../../helpers/types";
 import Box from "../Box";
 import { BoxProps } from "../Box/Box";
 import BoxButton from "../BoxButton";
 import Icon from "../Icon";
 import { iconVariant } from "../Icon/iconVariant";
-import Typo from "../Typo";
+import { Bold } from "../Typo";
 type IIconElement = {} | { iconPosition: "noIcon"; iconVariant: null };
 
 export interface LabelProps {
@@ -33,15 +33,10 @@ const Label: FC<LabelProps> = ({
   const {
     colors: {
       error,
-      errorLight,
       warning,
-      warningLight,
       valid,
-      validLight,
       info,
-      infoLight,
       font: { medium: fontMedium },
-      bg: { medium: bgMedium },
     },
   } = useContext(ThemeContext);
 
@@ -56,13 +51,7 @@ const Label: FC<LabelProps> = ({
     { label: "info", color: info },
     { label: "default", color: fontMedium },
   ];
-  const shadowColors = [
-    { label: "error", color: errorLight },
-    { label: "valid", color: validLight },
-    { label: "warning", color: warningLight },
-    { label: "info", color: infoLight },
-    { label: "default", color: bgMedium },
-  ];
+
   const iconColor = iconColors.find((el) => el.label === colorType)!.color;
 
   const LabelIcon = () => (
@@ -85,13 +74,7 @@ const Label: FC<LabelProps> = ({
           <LabelIcon />
         </Box>
       )}
-      {isOnlyIcon ? (
-        <LabelIcon />
-      ) : (
-        <Typo color={fontColor} variant="label">
-          {text}
-        </Typo>
-      )}
+      {isOnlyIcon ? <LabelIcon /> : <Bold color={fontColor}>{text}</Bold>}
       {isIconRight && (
         <Box ml="xs">
           <LabelIcon />
@@ -102,9 +85,12 @@ const Label: FC<LabelProps> = ({
 };
 
 const ShadowButton = styled(BoxButton)<{ shadow: string }>`
-  transition: all 0.5s;
+  transition: all 0.3s;
   &:hover {
-    box-shadow: ${({ shadow }) => lightShadow(shadow)};
+    box-shadow: ${({ shadow }) => boxShadow(shadow)};
+  }
+  &:active {
+    box-shadow: ${({ shadow }) => emptyShadow(shadow)};
   }
 `;
 
