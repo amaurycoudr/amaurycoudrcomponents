@@ -12,7 +12,6 @@ export default {
       </div>
     ),
   ],
-  argTypes: { onClick: { action: "clicked" } },
 } as Meta;
 
 const Template: Story<MessageInfoProps & { text: string }> = ({
@@ -23,32 +22,32 @@ const Template: Story<MessageInfoProps & { text: string }> = ({
 const loraIpsum =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida enim sit amet massa varius, eget tincidunt dui facilisis. Aliquam ac ligula tellus. Aliquam vitae mattis dolor, ut vestibulum sem. Sed metus elit, lacinia at nisi sit amet, egestas vulputate mauris.";
 
-export const DefaultIcon = Template.bind({});
-DefaultIcon.args = {
+export const DefaultColor = Template.bind({});
+DefaultColor.args = {
   text: loraIpsum,
   colorType: "default",
   iconVariant: "info",
 };
-export const ErrorIcon = Template.bind({});
-ErrorIcon.args = {
+export const ErrorColor = Template.bind({});
+ErrorColor.args = {
   text: loraIpsum,
   colorType: "error",
-  iconVariant: "info",
+  iconVariant: "error",
 };
-export const ValidIcon = Template.bind({});
-ValidIcon.args = {
+export const ValidColor = Template.bind({});
+ValidColor.args = {
   text: loraIpsum,
   colorType: "valid",
-  iconVariant: "info",
+  iconVariant: "check_circle",
 };
-export const WarningIcon = Template.bind({});
-WarningIcon.args = {
+export const WarningColor = Template.bind({});
+WarningColor.args = {
   text: loraIpsum,
   colorType: "warning",
-  iconVariant: "info",
+  iconVariant: "warning",
 };
-export const InfoIcon = Template.bind({});
-InfoIcon.args = {
+export const InfoColor = Template.bind({});
+InfoColor.args = {
   text: loraIpsum,
   colorType: "info",
   iconVariant: "info",

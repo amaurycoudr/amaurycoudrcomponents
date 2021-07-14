@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import {
+  background,
+  BackgroundProps,
   border,
   BorderProps,
   borderRadius,
@@ -21,7 +23,7 @@ export type BoxProps = BorderProps &
   PositionProps &
   LayoutProps & {
     bg?: string;
-  };
+  } & BackgroundProps;
 
 const Box = styled.div<BoxProps>`
   display: flex;
@@ -36,6 +38,7 @@ const Box = styled.div<BoxProps>`
   ${flexbox};
   ${position};
   ${layout};
+  ${background};
 `;
 
 export default Box;

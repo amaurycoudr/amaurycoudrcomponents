@@ -1,22 +1,16 @@
 import styled from "styled-components";
 import {
+  background,
   border,
-  BorderProps,
   borderRadius,
   borderStyle,
   color,
-  ColorProps,
   flexbox,
-  FlexboxProps,
   layout,
-  LayoutProps,
   position,
-  PositionProps,
   space,
-  SpaceProps,
 } from "styled-system";
 import { BoxProps } from "../Box/Box";
-
 
 const BoxButton = styled.button<BoxProps>`
   display: flex;
@@ -37,6 +31,7 @@ const BoxButton = styled.button<BoxProps>`
   ${flexbox};
   ${position};
   ${layout};
+  ${background};
 `;
 
 export default BoxButton;

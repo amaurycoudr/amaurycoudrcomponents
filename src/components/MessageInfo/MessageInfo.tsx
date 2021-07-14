@@ -54,4 +54,4 @@ const MessageInfo: FC<MessageInfoProps> = ({
   );
 };
 
-export default MessageInfo;
+export default React.memo(MessageInfo);
