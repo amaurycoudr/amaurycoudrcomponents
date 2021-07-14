@@ -12,7 +12,6 @@ export default {
       </div>
     ),
   ],
-  argTypes: { onClick: { action: "clicked" } },
 } as Meta;
 
 const Template: Story<LabelProps> = (args) => <Label {...args} />;

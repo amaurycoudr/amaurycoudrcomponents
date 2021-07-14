@@ -1,21 +1,38 @@
-import React, { FC, useContext, useState } from "react";
+import React, { FC, useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
-import { lightShadow } from "../../helpers/shadow";
-import { iconPosition } from "../../helpers/types";
+import { emptyShadowLight, shadowLight } from "../../helpers/shadow";
 import Box from "../Box";
 import { BoxProps } from "../Box/Box";
 import BoxButton from "../BoxButton";
 import Icon from "../Icon";
+import { iconPosition } from "../Icon/helper";
 import { iconVariant } from "../Icon/iconVariant";
-import Typo from "../Typo";
-type IIconElement = {} | { iconPosition: "noIcon"; iconVariant: null };
+import { Bold } from "../Typo";
 
 export interface LabelProps {
+  /**
+   * Color of the label
+   */
   colorType: "error" | "valid" | "warning" | "info" | "default";
+  /**
+   * Define the icon position. Display noIcon if iconPosition="noIcon"
+   */
   iconPosition: iconPosition | "noIcon";
+  /**
+   * The text of the label
+   */
   text?: string;
+  /**
+   * This props define if the label has its bg or its border colored. border work well only for "default"
+   */
   fillingType?: "border" | "bg";
+  /**
+   * The variant of the icon Display. If iconPosition!="noIcon" this props must be define
+   */
   iconVariant?: iconVariant;
+  /**
+   * The label can be clickable. So it accepts a props onClick
+   */
   onClick?: (() => void) | null;
 }
 const Label: FC<LabelProps> = ({
@@ -33,15 +50,10 @@ const Label: FC<LabelProps> = ({
   const {
     colors: {
       error,
-      errorLight,
       warning,
-      warningLight,
       valid,
-      validLight,
       info,
-      infoLight,
       font: { medium: fontMedium },
-      bg: { medium: bgMedium },
     },
   } = useContext(ThemeContext);
 
@@ -56,13 +68,7 @@ const Label: FC<LabelProps> = ({
     { label: "info", color: info },
     { label: "default", color: fontMedium },
   ];
-  const shadowColors = [
-    { label: "error", color: errorLight },
-    { label: "valid", color: validLight },
-    { label: "warning", color: warningLight },
-    { label: "info", color: infoLight },
-    { label: "default", color: bgMedium },
-  ];
+
   const iconColor = iconColors.find((el) => el.label === colorType)!.color;
 
   const LabelIcon = () => (
@@ -85,13 +91,7 @@ const Label: FC<LabelProps> = ({
           <LabelIcon />
         </Box>
       )}
-      {isOnlyIcon ? (
-        <LabelIcon />
-      ) : (
-        <Typo color={fontColor} variant="label">
-          {text}
-        </Typo>
-      )}
+      {isOnlyIcon ? <LabelIcon /> : <Bold color={fontColor}>{text}</Bold>}
       {isIconRight && (
         <Box ml="xs">
           <LabelIcon />
@@ -102,9 +102,12 @@ const Label: FC<LabelProps> = ({
 };
 
 const ShadowButton = styled(BoxButton)<{ shadow: string }>`
-  transition: all 0.5s;
+  transition: all 0.3s;
   &:hover {
-    box-shadow: ${({ shadow }) => lightShadow(shadow)};
+    box-shadow: ${({ shadow }) => shadowLight(shadow)};
+  }
+  &:active {
+    box-shadow: ${({ shadow }) => emptyShadowLight(shadow)};
   }
 `;
 
@@ -122,4 +125,4 @@ const LabelContainer: FC<
   );
 };
 
-export default Label;
+export default React.memo(Label);
